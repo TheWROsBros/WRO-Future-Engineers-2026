@@ -3,7 +3,7 @@ Documentation / Dokumentacija / Documentazione
 ## Team
 WROsBros
 ## Members
-While all team members were equally involved in the creation and programming of our Mishek robot, we were not all for the same things, but we changed roles over time. Members of our team include Noah Markulin, Jakov Gršeta and Marko Mihalić
+While all team members were equally involved in the creation and programming of our robot called Mishek, we were not all for the same things, but we changed roles over time. Members of our team include Noah Markulin, Jakov Gršeta and Marko Mihalić
 ## Vehicle
 Our Mishko was built mainly by Jakov Gršeta and made out of LEGO bricks. To ressemble Subaru automobile. It is capable of moving forward and turning. Also, hard but possible there is a chance it can do parallel parking and avoid obstacles by recongnizing color.
 ## Competition
