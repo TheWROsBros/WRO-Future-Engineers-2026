@@ -11,8 +11,8 @@ Our Mishko was built mainly by Jakov Gršeta and made out of LEGO bricks. To res
    OBJECTIVE: The vehicle must successfully finish 3 laps on the track.
    
 2. Obstacle challange
-   ## Objective
-The objective of the challenge is for the autonomous vehicle to complete three laps around the track while following all competition rules.
+   
+OBJECTIVE: The objective of the challenge is for the autonomous vehicle to complete three laps around the track while following all competition rules.
 
 During the laps, the vehicle must correctly navigate around the traffic signs:
 - Red traffic signs must be passed on the right side.
@@ -25,18 +25,17 @@ The vehicle must avoid collisions with walls, traffic signs, and parking boundar
 ## Mechanical Design
 
 The robot is built according to the WRO Future Engineers rules. It is based on a Subaru car and uses a single engine to drive the rear wheels, and with the front wheels it turns using a different engine.
-## Electronics
+## Dimensions and specifications
+Lenght: 30 cm
+Width: 16 cm
+Weight: 0.6 kg
 
-- Raspberry Pi
-- Kamera
-- Ultrazvučni senzori
-- IMU
-
-## Software Architecture
-
-Dijagram modula.
-
-### Vision Module
+## Hardware
+Controller: LEGO SPIKE Prime Hub
+Distance Sensor: LEGO Distance Sensor
+Color sensor: LEGO Color Sensor
+Driving Motor: LEGO Motor
+Steering Motor: LEGO Motor
 
 Prepoznavanje zidova i stupova.
 
