@@ -40,12 +40,12 @@ Steering Motor: LEGO Motor
 ## Software
 1. WIRING DIAGRAM / PORT ASSIGNMENT
 | Component | Device Type | Port | Function |
-|-----------|------------|------|----------|
+|-----------|-------------|------|----------|
 | Distance Sensor | LEGO SPIKE Prime Distance Sensor | B | Side obstacle detection |
-| Distance & Color Sensor | LEGO ColorDistance Sensor | C | Front obstacle detection & distance tracking |
+| Distance & Color Sensor | LEGO ColorDistance Sensor | C | Front obstacle detection and distance measurement |
 | Driving Motor | LEGO Large Angular Motor | D | Rear-axle propulsion and velocity control |
-| Steering Motor | LEGO Medium Angular Motor | E | Deflects the wheels |
-| Distance Sensor | LEGO SPIKE Prime Distance Sensor | F | Side obsstacle detection |
+| Steering Motor | LEGO Medium Angular Motor | E | Controls the steering angle of the front wheels |
+| Distance Sensor | LEGO SPIKE Prime Distance Sensor | F | Side obstacle detection |
 
 ### Navigation Module
 
