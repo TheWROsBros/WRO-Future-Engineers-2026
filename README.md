@@ -38,7 +38,7 @@ Driving Motor: LEGO Motor
 Steering Motor: LEGO Motor
 
 ## Software
-1. WIRING DIAGRAM / PORT ASSIGNMENT
+# 1. WIRING DIAGRAM / PORT ASSIGNMENT
 
    
 | Component | Device Type | Port | Function |
@@ -49,82 +49,27 @@ Steering Motor: LEGO Motor
 | Steering Motor | LEGO Medium Angular Motor | E | Controls the steering angle of the front wheels |
 | Distance Sensor | LEGO SPIKE Prime Distance Sensor | F | Side obstacle detection |
 
-### Navigation Module
+# 2. Sensor Selection & Placement
 
-Određivanje putanje.
+We placed the side sensors on the back side near the rear bumper, which can detect obstacles up to 2 meters on each side.
 
-### Parking Module
+DistanceColor sensor is placed on the back side of the vehicle.
 
-Paralelno parkiranje.
+# 3. Obstacle and Parking Logic
 
-## Testing
+Red and Green pillars: When the obstacle is detected within 10 cm, the color sensor evaluates its RGB signature. If the red value is dominant, the motor will immediately steer right, if the green value is dominant, it will steer to the right.
 
-Kako ste testirali.
+Parking Mission: The software maintans an internal lap counter and upon entering the 3rd, the color scanning begins for the magenta parking barrier. Once it detects that the robot halts and switches to a program designed to park it.
 
-## Lessons Learned
 
-Problemi i rješenja.
 
-## Build Instructions
-
-Kako pokrenuti kod.
+## Development
 
 ## Repository Structure
+/docs - documentation
+/code - source code
+/images - robot images
+/videos - challange videos
 
-Objašnjenje mapa.# WRO Future Engineers 2026
 
-## Team
 
-- Ime tima
-- Škola
-- Država
-- Članovi
-
-## Challenge Overview
-
-Kratki opis vozila.
-
-## Mechanical Design
-
-Opis šasije.
-Opis upravljanja.
-Opis pogona.
-
-## Electronics
-
-- Raspberry Pi
-- Kamera
-- Ultrazvučni senzori
-- IMU
-
-## Software Architecture
-
-Dijagram modula.
-
-### Vision Module
-
-Prepoznavanje zidova i stupova.
-
-### Navigation Module
-
-Određivanje putanje.
-
-### Parking Module
-
-Paralelno parkiranje.
-
-## Testing
-
-Kako ste testirali.
-
-## Lessons Learned
-
-Problemi i rješenja.
-
-## Build Instructions
-
-Kako pokrenuti kod.
-
-## Repository Structure
-
-Objašnjenje mapa.
