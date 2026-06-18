@@ -39,6 +39,8 @@ Steering Motor: LEGO Motor
 
 ## Software
 1. WIRING DIAGRAM / PORT ASSIGNMENT
+
+   
 | Component | Device Type | Port | Function |
 |-----------|-------------|------|----------|
 | Distance Sensor | LEGO SPIKE Prime Distance Sensor | B | Side obstacle detection |
