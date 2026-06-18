@@ -5,7 +5,7 @@ WROsBros
 ## Members
 While all team members were equally involved in the creation and programming of our robot called Mishek, we were not all for the same things, but we changed roles over time. Members of our team include Noah Markulin, Jakov Gršeta and Marko Mihalić
 ## Vehicle
-Our Mishko was built mainly by Jakov Gršeta and made out of LEGO bricks. To ressemble Subaru automobile. It is capable of moving forward and turning. Also, hard but possible there is a chance it can do parallel parking and avoid obstacles by recongnizing color.
+First we used 3D printed robots, which showed that it did not work, later we mmade a new one. Our robot Mishko was built mainly by Jakov Gršeta and made out of LEGO bricks. To ressemble Subaru automobile and later turned into a truck. It is capable of moving forward and turning. Also, hard but possible there is a chance it can do parallel parking and avoid obstacles by recongnizing color.
 ## Competition
 1. Open challange
    OBJECTIVE: The vehicle must successfully finish 3 laps on the track.
@@ -24,7 +24,7 @@ The vehicle must avoid collisions with walls, traffic signs, and parking boundar
 
 ## Mechanical Design
 
-The robot is built according to the WRO Future Engineers rules. It is based on a Subaru car and uses a single engine to drive the rear wheels, and with the front wheels it turns using a different engine.
+The robot is built according to the WRO Future Engineers rules. The design was changed from a Subaru to a truck.It uses a single engine to drive the rear wheels, and with the front wheels it turns using a different engine.
 ## Dimensions and specifications
 Lenght: 30 cm
 Width: 16 cm
@@ -37,7 +37,7 @@ Color sensor: LEGO Color Sensor
 Driving Motor: LEGO Motor
 Steering Motor: LEGO Motor
 
-Prepoznavanje zidova i stupova.
+##
 
 ### Navigation Module
 
