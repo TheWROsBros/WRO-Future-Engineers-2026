@@ -51,6 +51,7 @@ The robot is built according to the WRO Future Engineers rules. It uses a single
 
 - Length: 30 cm
 - Width: 16 cm
+- Height 
 - Weight: 0.6 kg
 
 ## Hardware
@@ -67,17 +68,20 @@ The robot is built according to the WRO Future Engineers rules. It uses a single
 
 | Component | Device Type | Port | Function |
 |-----------|-------------|------|----------|
-| Distance Sensor | LEGO SPIKE Prime Distance Sensor | B | Side obstacle detection |
-| Distance & Color Sensor | LEGO ColorDistance Sensor | C | Front obstacle detection and distance measurement |
+| Distance Sensor | LEGO SPIKE Prime Distance Sensor | E | Front obstacle detection |
+| Color Sensor | LEGO ColorDistance Sensor | A | Front obstacle detection and distance measurement |
 | Driving Motor | LEGO Large Angular Motor | D | Rear-axle propulsion and velocity control |
-| Steering Motor | LEGO Medium Angular Motor | E | Controls the steering angle of the front wheels |
+| Steering Motor | LEGO Medium Angular Motor | C | Controls the steering angle of the front wheels |
 | Distance Sensor | LEGO SPIKE Prime Distance Sensor | F | Side obstacle detection |
+| Distance Sensor | LEGO SPIKE Prime Distance Sensor | B | Side obstacle detection |
 
 ### 2. Sensor Selection and Placement
 
 The side-mounted distance sensors are positioned near the rear section of the vehicle. They are used to measure the distance from nearby walls and obstacles and can detect objects up to approximately 2 meters away.
+The front-mounted distance sensor is used to measure the distance from the front wall to the vehicle
 
-The ColorDistance Sensor is mounted at the front of the vehicle and is used for obstacle identification and parking detection.
+
+The Color Sensor is mounted at the front of the vehicle below the distance sensor and is used for obstacle identification and parking detection.
 
 ### 3. Obstacle and Parking Logic
 
@@ -96,7 +100,7 @@ Once the parking marker is detected, the robot stops and switches to a dedicated
 
 ### 4. Navigation Algorithm
 
-The robot uses two ultrasonic sensors mounted on the sides of the vehicle to estimate its position relative to the walls.
+The robot uses three sensors mounted on the sides of the vehicle to estimate its position relative to the walls.
 
 During normal driving, the software continuously compares the distance measured by both sensors and adjusts the steering angle to keep the vehicle centered on the track.
 
@@ -169,3 +173,104 @@ Testing focused on:
 - Faster lap completion times
 - More reliable parking performance
 - Enhanced navigation algorithms
+
+## Final Code
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor, 
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+turning_motor = Motor(Port.C, Direction.CLOCKWISE)
+driving_motor = Motor(Port.D, Direction.COUNTERCLOCKWISE)
+distance_sensor_front = UltrasonicSensor(Port.E)
+distance_sensor_left = UltrasonicSensor(Port.F)
+distance_sensor_right = UltrasonicSensor(Port.B)
+colour_sensor = ColorSensor(Port.A)
+
+hub = PrimeHub()
+
+#varijable
+rWheel = 31.2 #polumjer kotača u mm
+pi = 3.141592653589793
+tolerance = 1 #tolerancija za korištenje funkcije turn()
+resetAngle = -52 #kut za centriranje prednjih kotača za korištenje funkcije ResetTurningAngle()
+stallSpeed = 600 #brzina kretanja motora turning_motor prilikom izvršavanja funckije ResetTurningAngle()
+turningMotorSpeed = 1000 #brzina kretanja motora turning_motor za korištenje funckije ResetTurningAngle()
+dutyLimit = 75 #jačina motora prilikom izvršavanja funkcije ResetTurningAngle()
+
+#inicijalizacija
+cWheel=2*rWheel*pi
+#colour_sensor.lights.on()
+colour_sensor.lights.off()  
+distance_sensor_front.lights.on()
+distance_sensor_left.lights.on()
+distance_sensor_right.lights.on()
+#distance_sensor_right.lights.off()
+#distance_sensor_front.lights.off()
+
+def ResetTurningAngle():
+    turning_motor.run_until_stalled(stallSpeed, duty_limit=dutyLimit)
+    turning_motor.reset_angle()
+    turning_motor.run_angle(turningMotorSpeed,resetAngle)
+    turning_motor.reset_angle()
+
+def fd(v,s): #brzina, udaljenost    
+    angle = (s/cWheel)*360
+    driving_motor.reset_angle()
+    driving_motor.run_angle(v,angle)
+
+def turn(v,angle): #brzina, kut
+    driving_motor.stop()
+    hub.imu.reset_heading(0)
+    if angle > 0:
+        turning_motor.run_until_stalled(-stallSpeed, duty_limit=dutyLimit)
+    else:
+        turning_motor.run_until_stalled(stallSpeed, duty_limit=dutyLimit)
+    driving_motor.run(v)
+    while not abs(hub.imu.heading()) >= abs(angle)+tolerance or abs(hub.imu.heading()) <= abs(angle)-tolerance:
+        wait(5)
+    driving_motor.stop()
+    ResetTurningAngle()
+    ResetTurningAngle()
+driving_motor.run(1000)
+while hub.imu.heading() <= 1100:
+    #left/right 150-200-300
+    #front 235-300-400
+    if distance_sensor_front.distance() <= 400: #FRONT
+        if distance_sensor_front.distance() <= 235:
+            turning_motor.run_angle(-resetAngle)
+            driving_motor.run(300)
+        elif distance_sensor_front.distance() <= 300:
+            turning_motor.run_angle(-resetAngle/2)
+            driving_motor.run(500)
+        else:
+            turning_motor.run_angle(-resetAngle/4)
+            driving_motor.run(800)
+        wait(10)
+    elif distance_sensor_right.distance() <= 300: #RIGHT
+        if distance_sensor_right.distance() <= 150:
+            turning_motor.run_angle(resetAngle/2)
+            driving_motor.run(300)
+        elif distance_sensor_right.distance() <= 200:
+            turning_motor.run_angle(resetAngle/4)
+            driving_motor.run(500)
+        else:
+            turning_motor.run_angle(resetAngle/8)
+            driving_motor.run(800)
+        wait(10)
+    elif distance_sensor_left.distance() <= 300: #LEFT
+        if distance_sensor_left.distance() <= 150:
+            turning_motor.run_angle(-resetAngle/2)
+            driving_motor.run(300)
+        elif distance_sensor_left.distance() <= 200:
+            turning_motor.run_angle(-resetAngle/4)
+            driving_motor.run(500)
+        else:
+            turning_motor.run_angle(-resetAngle/8)
+            driving_motor.run(800)
+        wait(10)
+    else:
+        turning_motor.run_angle(0)
+        driving_motor.run(1000)
+driving_motor.stop()        
