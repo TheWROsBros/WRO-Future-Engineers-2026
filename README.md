@@ -49,9 +49,9 @@ The robot is built according to the WRO Future Engineers rules. It uses a single
 
 ## Dimensions and Specifications
 
-- Length: 30 cm
-- Width: 16 cm
-- Height 
+- Length: 25 cm
+- Width: 15 cm
+- Height 10 cm
 - Weight: 0.6 kg
 
 ## Hardware
