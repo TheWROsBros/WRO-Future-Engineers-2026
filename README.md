@@ -5,7 +5,7 @@ WROsBros
 ## Members
 While all team members were equally involved in the creation and programming of our robot called Mishek, we were not all for the same things, but we changed roles over time. Members of our team include Noah Markulin, Jakov Gršeta and Marko Mihalić
 ## Vehicle
-First we used 3D printed robots, which showed that it did not work, later we mmade a new one. Our robot Mishko was built mainly by Jakov Gršeta and made out of LEGO bricks. It is capable of moving forward and turning. Also, hard but possible there is a chance it can do parallel parking and avoid obstacles by recongnizing color.
+Initially, we experimented with a 3D-printed chassis. However, it proved to be unreliable and difficult to maintain. Therefore, we redesigned the vehicle using LEGO components. The final vehicle, called Mishek, was mainly assembled by Jakov Gršeta and is capable of autonomous navigation, obstacle avoidance, and parking maneuvers.
 ## Competition
 1. Open challange
    OBJECTIVE: The vehicle must successfully finish 3 laps on the track.
@@ -60,6 +60,14 @@ DistanceColor sensor is placed on the back side of the vehicle.
 Red and Green pillars: When the obstacle is detected within 10 cm, the color sensor evaluates its RGB signature. If the red value is dominant, the motor will immediately steer right, if the green value is dominant, it will steer to the right.
 
 Parking Mission: The software maintans an internal lap counter and upon entering the 3rd, the color scanning begins for the magenta parking barrier. Once it detects that the robot halts and switches to a program designed to park it.
+
+## 4. Navigation Algorithm
+
+The robot uses two ultrasonic sensors mounted on the sides of the vehicle to estimate its position relative to the walls.
+
+During normal driving, the software continuously compares the distance measured by both sensors and adjusts the steering angle to keep the vehicle centered on the track.
+
+When a side wall is no longer detected, the robot recognizes an approaching corner and initiates a 90-degree turn using data from the built-in IMU.
 
 
 
