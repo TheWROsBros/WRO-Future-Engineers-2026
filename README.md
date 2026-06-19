@@ -14,7 +14,7 @@ All team members were actively involved in the design, construction, programming
 
 Team members:
 
-- Noah Markulin
+- Noa Markulin
 - Jakov Gršeta
 - Marko Mihalić
 
